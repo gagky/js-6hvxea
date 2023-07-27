@@ -80,6 +80,12 @@ class AirSearchAnalysis {
     });
   }
 
+  findFareFamilyOptions(targetItineraryPriceUri) {
+    return _(this.json)
+      .findParentByReferenceUri(targetItineraryPriceUri)
+      .value();
+  }
+
   listItineraryPricesByItineraryUri(targetItineraryUri, option) {
     return _(this.json)
       .findParentByReferenceUri(targetItineraryUri, ['farePrice'])
@@ -87,13 +93,10 @@ class AirSearchAnalysis {
       .filter(
         (itinerayPrice) =>
           !option ||
-          _(this.json)
-            .findParentByReferenceUri(itinerayPrice.uri)
-            .value()
-            .find(
-              (fareFamilyOption) =>
-                fareFamilyOption.fareFamilyRef.id == option.fareFamilyRef
-            )
+          this.findFareFamilyOptions(itinerayPrice.uri).find(
+            (fareFamilyOption) =>
+              fareFamilyOption.fareFamilyRef.id == option.fareFamilyRef
+          )
       );
   }
 }

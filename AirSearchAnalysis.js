@@ -105,7 +105,7 @@ class AirSearchAnalysis {
         this.findFareFamilyOptions(itinerayPrice.uri).find(
           (fareFamilyOption) =>
             fareFamilyOption.fareFamilyRef.id ==
-            byCriteriaInput.fareFamilyRef.fareFamilyRef
+            byCriteriaInput.fareFamilyRef
         )
     );
   }

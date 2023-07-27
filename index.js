@@ -147,6 +147,25 @@ const itineraryPricesOfBu = airSearchAnalysis.listItineraryPricesByItineraryUri(
 console.log('listItineraryPricesByItineraryUri', itineraryPricesOfBu);
 
 console.log(
+  '1531+557',
+  airSearchAnalysis.findItineraryPrices({
+    originDestinationGroup: {
+      index: 0,
+      departureDateGroup: { date: '2023-06-05' },
+    },
+    flightSegments: [
+      {
+        flightNumber: '1531',
+        marketingAirlineRef: 'VA',
+      },
+      {
+        flightNumber: '557',
+        marketingAirlineRef: 'VA',
+      },
+    ],
+  })
+);
+console.log(
   '1531+557 / BU',
   airSearchAnalysis.findItineraryPrices({
     originDestinationGroup: {

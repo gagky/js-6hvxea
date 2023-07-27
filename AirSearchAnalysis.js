@@ -86,18 +86,28 @@ class AirSearchAnalysis {
       .value();
   }
 
-  listItineraryPricesByItineraryUri(targetItineraryUri, option) {
+  listItineraryPricesByItineraryUri(targetItineraryUri) {
     return _(this.json)
       .findParentByReferenceUri(targetItineraryUri, ['farePrice'])
-      .value()
-      .filter(
-        (itinerayPrice) =>
-          !option ||
-          this.findFareFamilyOptions(itinerayPrice.uri).find(
-            (fareFamilyOption) =>
-              fareFamilyOption.fareFamilyRef.id == option.fareFamilyRef
-          )
-      );
+      .value();
+  }
+
+  findItineraryPrices(byCriteriaInput) {
+    const targetItinerary = this.findItineraries(byCriteriaInput)[0];
+
+    const targetItineraryUri = _.getUri(targetItinerary);
+    return this.listItineraryPricesByItineraryUri(
+      targetItineraryUri,
+      byCriteriaInput
+    ).filter(
+      (itinerayPrice) =>
+        !byCriteriaInput.fareFamilyRef ||
+        this.findFareFamilyOptions(itinerayPrice.uri).find(
+          (fareFamilyOption) =>
+            fareFamilyOption.fareFamilyRef.id ==
+            byCriteriaInput.fareFamilyRef.fareFamilyRef
+        )
+    );
   }
 }
 

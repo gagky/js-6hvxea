@@ -10,7 +10,7 @@ const airSearchAnalysis = new AirSearchAnalysis(exmapleJson);
 
 const AnalysisRender = (title, result) => {
   document.write(`<h1>${title}</h1>`);
-  document.write(`<pre><code>${JSON.string(result, null, 2)}</code></pre>`);
+  document.write(`<pre><code>${JSON.stringify(result, null, 2)}</code></pre>`);
 };
 
 AnalysisRender(

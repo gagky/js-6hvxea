@@ -10,11 +10,11 @@ const airSearchAnalysis = new AirSearchAnalysis(exmapleJson);
 
 const AnalysisRender = (title, result) => {
   document.write(`<h1>${title}</h1>`);
-  document.write(`<pre><code>${result}</code></pre>`);
+  document.write(`<pre><code>${JSON.string(result, null, 2)}</code></pre>`);
 };
 
 AnalysisRender(
-  '1531+557',
+  'VA1531+VA557',
   airSearchAnalysis.findItineraryPrices({
     originDestinationGroup: {
       index: 0,
@@ -33,7 +33,7 @@ AnalysisRender(
   })
 );
 AnalysisRender(
-  '1531+557 / BU',
+  'VA1531+VA557 / BU',
   airSearchAnalysis.findItineraryPrices({
     originDestinationGroup: {
       index: 0,
@@ -54,7 +54,7 @@ AnalysisRender(
 );
 
 AnalysisRender(
-  '1531+557 / CH',
+  'VA1531+VA557 / CH',
   airSearchAnalysis.findItineraryPrices({
     originDestinationGroup: {
       index: 0,

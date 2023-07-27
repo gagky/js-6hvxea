@@ -167,4 +167,25 @@ console.log(
   })
 );
 
+console.log(
+  '1531+557 / CH',
+  airSearchAnalysis.findItineraryPrices({
+    originDestinationGroup: {
+      index: 0,
+      departureDateGroup: { date: '2023-06-05' },
+    },
+    flightSegments: [
+      {
+        flightNumber: '1531',
+        marketingAirlineRef: 'VA',
+      },
+      {
+        flightNumber: '557',
+        marketingAirlineRef: 'VA',
+      },
+    ],
+    fareFamilyRef: 'CH',
+  })
+);
+
 document.write('read console');
